@@ -5,16 +5,15 @@ MAX: int = 2000
 
 
 def selection_sort(collection: list[int]) -> None:
-    length: int = len(collection)
-
-    for i in range(length - 1):
+    for i in range(len(collection) - 1):
         min_index = i
 
-        for j in range(i + 1, length):
+        for j in range(i + 1, len(collection)):
             if collection[min_index] > collection[j]:
                 min_index = j
 
-        collection[i], collection[min_index] = collection[min_index], collection[i]
+        if min_index != i:
+            collection[i], collection[min_index] = collection[min_index], collection[i]
 
 
 def main() -> None:
