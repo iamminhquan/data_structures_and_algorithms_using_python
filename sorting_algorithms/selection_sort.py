@@ -5,6 +5,29 @@ MAX: int = 2000
 
 
 def selection_sort(collection: list[int]) -> None:
+    """
+    Sort a list of integers in ascending order using the selection sort algorithm.
+
+    This algorithm divides the list into a sorted and unsorted region. It repeatedly
+    selects the smallest element from the unsorted region and moves it to the end
+    of the sorted region.
+
+    :param collection: The list of integers to be sorted.
+    :type collection: list[int]
+    :return: None. The list is sorted in-place.
+    :rtype: None
+
+    :Example:
+
+    >>> arr = [64, 25, 12, 22, 11]
+    >>> selection_sort(arr)
+    >>> arr
+    [11, 12, 22, 25, 64]
+
+    :Time Complexity: O(n^2) in all cases (best, average, worst).
+    :Space Complexity: O(1) - sorts in-place.
+    :Note: Selection sort makes fewer swaps than interchange sort (at most n-1 swaps).
+    """
     for i in range(len(collection) - 1):
         min_index = i
 
