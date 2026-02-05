@@ -5,10 +5,8 @@ MAX: int = 2000
 
 
 def interchange_sort(collection: list[int]) -> None:
-    length: int = len(collection)
-
-    for i in range(length - 1):
-        for j in range(i + 1, length):
+    for i in range(len(collection) - 1):
+        for j in range(i + 1, len(collection)):
             if collection[i] > collection[j]:
                 collection[i], collection[j] = collection[j], collection[i]
 
