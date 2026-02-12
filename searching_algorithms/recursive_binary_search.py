@@ -42,7 +42,7 @@ def recursive_binary_search(
     if left_index > right_index:
         return -1
 
-    middle_index: int = (left_index + right_index) // 2
+    middle_index: int = ((left_index + right_index) - left_index) // 2
     middle_element: int = collection[middle_index]
 
     if middle_element == target:
