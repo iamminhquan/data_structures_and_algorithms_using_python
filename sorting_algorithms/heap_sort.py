@@ -48,16 +48,10 @@ def heap_sort(collection: list[int]) -> None:
             right_child: int = 2 * root + 2
             largest: int = root
 
-            if (
-                left_child <= end
-                and collection[left_child] > collection[largest]
-            ):
+            if left_child <= end and collection[left_child] > collection[largest]:
                 largest = left_child
 
-            if (
-                right_child <= end
-                and collection[right_child] > collection[largest]
-            ):
+            if right_child <= end and collection[right_child] > collection[largest]:
                 largest = right_child
 
             if largest == root:
