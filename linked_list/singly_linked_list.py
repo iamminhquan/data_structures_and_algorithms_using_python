@@ -52,7 +52,76 @@ class Node(Generic[T]):
         self.__next = next_node
 
 
+class SinglyLinkedList(Generic[T]):
+    """
+    A basic singly linked list structure.
+
+    This class currently provides only the essential skeleton (constructor and
+    a few dunder methods). Core operations (insert, delete, search, etc.) will
+    be added later.
+
+    :return: None
+    :rtype: None
+    """
+
+    def __init__(self) -> None:
+        """
+        Create an empty singly linked list.
+
+        :return: None
+        :rtype: None
+        """
+        self.__head: Optional[Node[T]] = None
+        self.__tail: Optional[Node[T]] = None
+        self.__size: int = 0
+
+    @property
+    def head(self) -> Optional[Node[T]]:
+        """
+        Get the first node of the list.
+        """
+        return self.__head
+
+    @property
+    def tail(self) -> Optional[Node[T]]:
+        """
+        Get the last node of the list.
+        """
+        return self.__tail
+
+    def __len__(self) -> int:
+        """
+        Return the number of elements in the list.
+
+        :return: The list size.
+        :rtype: int
+        """
+        return self.__size
+
+    def __iter__(self):
+        """
+        Iterate over values from head to tail.
+
+        :return: An iterator of node values.
+        :rtype: iterator
+        """
+        current: Optional[Node[T]] = self.__head
+        while current is not None:
+            yield current.value
+            current = current.next
+
+    def __repr__(self) -> str:
+        values: list[str] = [repr(value) for value in self]
+        return f"SinglyLinkedList([{', '.join(values)}])"
+
+
 def main() -> None:
+    """
+    Demonstrate `Node` and the basic behavior of `SinglyLinkedList`.
+
+    :return: None
+    :rtype: None
+    """
     first: Node[int] = Node(1)
     second: Node[int] = Node(2)
     third: Node[int] = Node(3)
@@ -65,6 +134,35 @@ def main() -> None:
 
     if second.next is not None:
         print(f"{second.value} -> {second.next.value}")
+
+    empty_list: SinglyLinkedList[int] = SinglyLinkedList()
+    print("empty_list:", empty_list)
+    print("len(empty_list):", len(empty_list))
+    print("iter(empty_list):", list(empty_list))
+    print("head(empty_list) is None:", empty_list.head is None)
+    print("tail(empty_list) is None:", empty_list.tail is None)
+
+    # This skeleton list class does not yet include insertion methods.
+    # For demo purposes only, we populate private fields via name-mangling.
+    linked_list: SinglyLinkedList[int] = SinglyLinkedList()
+    n1: Node[int] = Node(10)
+    n2: Node[int] = Node(20)
+    n3: Node[int] = Node(30)
+    n1.next = n2
+    n2.next = n3
+
+    linked_list._SinglyLinkedList__head = n1
+    linked_list._SinglyLinkedList__tail = n3
+    linked_list._SinglyLinkedList__size = 3
+
+    print("linked_list:", linked_list)
+    print("len(linked_list):", len(linked_list))
+    print("iter(linked_list):", list(linked_list))
+
+    if linked_list.head is not None:
+        print("head value:", linked_list.head.value)
+    if linked_list.tail is not None:
+        print("tail value:", linked_list.tail.value)
 
 
 if __name__ == "__main__":
