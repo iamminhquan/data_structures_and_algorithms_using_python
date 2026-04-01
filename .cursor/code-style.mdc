@@ -47,9 +47,6 @@ def interchange_sort(collection: list[int]) -> None:
     >>> interchange_sort(collection)
     >>> collection
     [11, 12, 22, 25, 34, 64, 90]
-
-    :Time Complexity: O(n^2) in all cases (best, average, worst).
-    :Space Complexity: O(1) - sorts in-place.
     """
 
 ---
